@@ -12,8 +12,8 @@ public class RestCountriesApiService {
     private static final String BASE_PATH = "https://restcountries.com/v2";
     private RestTemplate restTemplate = new RestTemplate();
 
-    public List<Country> getCountryDetailsByName(String name){
-        Country[] deatils = restTemplate.getForObject(BASE_PATH+"/name/"+name, Country[].class);
-        return Arrays.asList(deatils);
+    public List<Country> getCountriesByPartialName(String partialName){
+        Country[] details = restTemplate.getForObject(BASE_PATH+"/name/"+partialName, Country[].class);
+        return Arrays.asList(details);
     }
 }

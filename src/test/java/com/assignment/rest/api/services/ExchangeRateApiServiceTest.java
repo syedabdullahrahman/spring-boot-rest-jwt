@@ -4,8 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static org.junit.Assert.*;
-
 public class ExchangeRateApiServiceTest {
 
     @Autowired
@@ -17,6 +15,6 @@ public class ExchangeRateApiServiceTest {
 
     @Test
     public void getCurrencyRatesByCurrencyCode() {
-        System.out.println(exchangeRateApiService.getCurrencyRatesByCurrencyCode("BDT"));
+        System.out.println(exchangeRateApiService.getCurrencyRateByCurrencyCode("BDT"));
     }
 }

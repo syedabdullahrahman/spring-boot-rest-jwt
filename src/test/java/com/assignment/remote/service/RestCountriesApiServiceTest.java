@@ -18,6 +18,6 @@ public class RestCountriesApiServiceTest {
     @Test
     public void getCountryDetailsByName() {
 
-        System.out.println(restCountriesApiService.getCountryDetailsByName("ban"));
+        System.out.println(restCountriesApiService.getCountriesByPartialName("ban"));
     }
 }

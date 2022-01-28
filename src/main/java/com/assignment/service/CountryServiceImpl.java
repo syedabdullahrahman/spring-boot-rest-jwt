@@ -1,11 +1,11 @@
 package com.assignment.service;
 
-import com.assignment.dto.CountryDetail;
+import com.assignment.dto.v1.CountryDetailV1;
 import com.assignment.rest.api.services.ExchangeRateApiService;
 import com.assignment.rest.api.services.RestCountriesApiService;
 import com.assignment.rest.countryapi.response.Country;
 import com.assignment.rest.countryapi.response.Currency;
-import com.assignment.rest.exchangeaoi.response.CurrencyRates;
+import com.assignment.rest.exchangeaoi.response.CurrencyRate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,20 +21,20 @@ public class CountryServiceImpl implements CountryService{
     private RestCountriesApiService restCountriesApiService;
 
     @Override
-    public List<CountryDetail> getDetailsByName(String partialCountryName) throws Exception {
-        List<CountryDetail> countryDetails = new ArrayList<>();
-        for (Country countryDetailsByName : restCountriesApiService.getCountryDetailsByName(partialCountryName)) {
-            CountryDetail countryDetail = new CountryDetail();
-            countryDetail.setFullName(countryDetailsByName.getName());
-            countryDetail.setPopulation(countryDetailsByName.getPopulation());
-            countryDetail.setOfficialCurrenciesWithEmptyRates(countryDetailsByName.getCurrencies());
+    public List<CountryDetailV1> getDetailsByName(String partialCountryName) throws Exception {
+        List<CountryDetailV1> countryDetailV1s = new ArrayList<>();
+        for (Country countryDetailsByName : restCountriesApiService.getCountriesByPartialName(partialCountryName)) {
+            CountryDetailV1 countryDetailV1 = new CountryDetailV1();
+            countryDetailV1.setFullName(countryDetailsByName.getFullName());
+            countryDetailV1.setPopulation(countryDetailsByName.getPopulation());
+            countryDetailV1.setOfficialCurrenciesWithEmptyRates(countryDetailsByName.getCurrencies());
 
             for (Currency currency: countryDetailsByName.getCurrencies()) {
-                CurrencyRates currencyRatesByCurrencyCode = exchangeRateApiService.getCurrencyRatesByCurrencyCode(currency.getCode());
-                countryDetail.setOfficialCurrenciesINRRate(currency.getCode(),currencyRatesByCurrencyCode.getINRRate());
+                CurrencyRate currencyRatesByCurrencyCode = exchangeRateApiService.getCurrencyRateByCurrencyCode(currency.getCode());
+                countryDetailV1.setOfficialCurrenciesINRRate(currency.getCode(),currencyRatesByCurrencyCode.getINRRate());
             }
-            countryDetails.add(countryDetail);
+            countryDetailV1s.add(countryDetailV1);
         }
-        return countryDetails;
+        return countryDetailV1s;
     }
 }

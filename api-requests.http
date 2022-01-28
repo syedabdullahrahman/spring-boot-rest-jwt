@@ -30,9 +30,9 @@ Accepts: application/json
 
 ###
 
-GET http://localhost:8080/api/v1/name/l
+GET http://localhost:8080/api/v1/name/Bangla
 Accepts: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhc3NpZ25tZW50IiwiZXhwIjoxNjQyOTI5MzYyLCJpYXQiOjE2NDI5MjMzNjJ9.gF8sznX_4y1rBhiHylU9rJByWjIdfWm10qDjpO9CeUx2gaQmNPayKct-dM8OeUOZNiCRwFi9EL37THAkXJy38g
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhc3NpZ25tZW50SmFubmF0IEJpbmEiLCJleHAiOjE2NDI5NTE5MTAsImlhdCI6MTY0Mjk0NTkxMH0.JYTBif249x4Qw_yIVHaQTWbExBOWxugc0ewA-8Kz2XsE1afMYmt6lukTlkDhs5VTWnu5cbdDlRziNym4NPE0Ew
 
 ###
 
