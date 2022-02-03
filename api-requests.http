@@ -13,7 +13,7 @@ Accepts: application/json
 
 GET http://localhost:8080/hello
 Accepts: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhc3NpZ25tZW50IiwiZXhwIjoxNjQyODc1MTQzLCJpYXQiOjE2NDI4NzUwODN9.P-Q3RuUxSguacrX-Nud12Ia44mvCB-TIdBtzi-964znaQK_A6lTDSkvOqyJTddkiok812HFvQ35GeSobdnz5xw
+Authorization: Bearer <--token here-->
 
 
 ###
@@ -24,7 +24,7 @@ Content-Type: application/json
 Accepts: application/json
 
 {
-"username" :"assignment",
+"username" :learning,
 "password" :"password"
 }
 
@@ -32,7 +32,7 @@ Accepts: application/json
 
 GET http://localhost:8080/api/v1/name/Bangla
 Accepts: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhc3NpZ25tZW50SmFubmF0IEJpbmEiLCJleHAiOjE2NDI5NTE5MTAsImlhdCI6MTY0Mjk0NTkxMH0.JYTBif249x4Qw_yIVHaQTWbExBOWxugc0ewA-8Kz2XsE1afMYmt6lukTlkDhs5VTWnu5cbdDlRziNym4NPE0Ew
+Authorization: Bearer <--token here-->
 
 ###
 
