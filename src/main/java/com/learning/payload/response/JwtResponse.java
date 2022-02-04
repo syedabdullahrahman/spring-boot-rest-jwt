@@ -5,16 +5,31 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.List;
 
 public class JwtResponse {
-  @ApiModelProperty(position = 0)
+  @ApiModelProperty(value = "JWT Token",
+          name = "token",
+          dataType = "String",
+          example = "")
   private String token;
   private String type = "Bearer";
-  @ApiModelProperty(position = 1)
+  @ApiModelProperty(value = "User ID",
+          name = "id",
+          dataType = "Long",
+          example = "")
   private Long id;
-  @ApiModelProperty(position = 2)
+  @ApiModelProperty(value = "Username",
+          name = "username",
+          dataType = "String",
+          example = "")
   private String username;
-  @ApiModelProperty(position = 3)
+  @ApiModelProperty(value = "User email",
+          name = "email",
+          dataType = "String",
+          example = "")
   private String email;
-  @ApiModelProperty(position = 4)
+  @ApiModelProperty(value = "Roles",
+          name = "roles",
+          dataType = "List<String>",
+          example = "")
   private List<String> roles;
 
   public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles) {

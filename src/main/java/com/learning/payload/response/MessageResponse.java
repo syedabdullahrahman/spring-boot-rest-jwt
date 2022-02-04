@@ -3,7 +3,10 @@ package com.learning.payload.response;
 import io.swagger.annotations.ApiModelProperty;
 
 public class MessageResponse {
-  @ApiModelProperty(position = 0)
+  @ApiModelProperty(value = "Response message",
+          name = "message",
+          dataType = "String",
+          example = "User registration successful")
   private String message;
 
   public MessageResponse(String message) {

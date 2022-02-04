@@ -7,11 +7,17 @@ import javax.validation.constraints.NotNull;
 
 public class LoginRequest {
 	@NotBlank(message = "Username can't be blank")
-	@ApiModelProperty(position = 0)
+	@ApiModelProperty(value = "Username",
+			name = "username",
+			dataType = "String",
+			example = "")
 	private String username;
 
 	@NotBlank(message = "Password can't be blank")
-	@ApiModelProperty(position = 1)
+	@ApiModelProperty(value = "Password",
+			name = "password",
+			dataType = "String",
+			example = "")
 	private String password;
 
 	public String getUsername() {

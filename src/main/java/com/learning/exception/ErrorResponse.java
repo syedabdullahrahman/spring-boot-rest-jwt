@@ -4,11 +4,20 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class ErrorResponse {
 
-    @ApiModelProperty(position = 0)
+    @ApiModelProperty(value = "Error Status",
+            name = "status",
+            dataType = "String",
+            example = "")
     private String status;
-    @ApiModelProperty(position = 1)
+    @ApiModelProperty(value = "Message",
+            name = "message",
+            dataType = "String",
+            example = "")
     private String message;
-    @ApiModelProperty(position = 2)
+    @ApiModelProperty(value = "Details",
+            name = "details",
+            dataType = "String",
+            example = "")
     private String details;
 
     /**

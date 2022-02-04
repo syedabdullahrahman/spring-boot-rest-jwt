@@ -10,21 +10,33 @@ import java.util.Set;
 public class SignupRequest {
   @NotBlank
   @Size(min = 3, max = 20)
-  @ApiModelProperty(position = 0)
+  @ApiModelProperty(value = "Username",
+          name = "username",
+          dataType = "String",
+          example = "")
   private String username;
 
   @NotBlank
   @Size(max = 50)
   @Email
-  @ApiModelProperty(position = 1)
+  @ApiModelProperty(value = "User email",
+          name = "email",
+          dataType = "String",
+          example = "")
   private String email;
 
-  @ApiModelProperty(position = 2)
+  @ApiModelProperty(value = "Roles",
+          name = "roles",
+          dataType = "List<String>",
+          example = "")
   private Set<String> role;
 
   @NotBlank
   @Size(min = 6, max = 40)
-  @ApiModelProperty(position = 3)
+  @ApiModelProperty(value = "Password",
+          name = "password",
+          dataType = "String",
+          example = "")
   private String password;
 
   public String getUsername() {
