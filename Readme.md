@@ -1,7 +1,7 @@
 Spring Boot REST API Practices
 ========================================
 
-####Features:
+### Features:
 
 * JWT (Signin, Signup, Roles)
 * REST API best practices
@@ -10,6 +10,10 @@ Spring Boot REST API Practices
 * Task
 ![task](Task.PNG)
 *
+
+### To-do Items
+* Spring HATEOAS
+* Spring Auto REST Docs
 
 ## Requirements
 

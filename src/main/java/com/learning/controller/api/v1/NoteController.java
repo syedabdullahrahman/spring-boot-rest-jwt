@@ -25,10 +25,7 @@ public class NoteController {
             @ApiResponse(code = 500, message = "Internal Server Error")})
     public ResponseEntity<?> getAllNotes() {
         List<Note> note = noteService.getNotes();
-
-        ImmutableMap<String, Object> dataMap = ImmutableMap.of("status", 200,
-                "message", "success", "data", note);
-        return ResponseEntity.ok().body(dataMap);
+        return ResponseEntity.ok().body(note);
     }
 
     @PostMapping("/v1/notes")

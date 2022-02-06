@@ -63,12 +63,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 				// dont authenticate this particular request
-				.authorizeRequests().antMatchers("/authenticate").permitAll()
-				.antMatchers("/users/signin").permitAll()//
-				.antMatchers("/users/signup").permitAll()//
-				.antMatchers("/h2-console/**/**").permitAll().
+				.authorizeRequests()
+				.antMatchers("/api/auth/**","/h2-console/**/**").permitAll()
 				// all other requests need to be authenticated
-				anyRequest().authenticated();
+				.anyRequest().authenticated();
 
 
 		// If a user try to access a resource without having enough permissions

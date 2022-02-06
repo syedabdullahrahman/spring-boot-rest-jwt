@@ -6,28 +6,34 @@
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
 
 
-GET http://localhost:8080/hello
-Accepts: application/json
-
-###
-
-GET http://localhost:8080/hello
-Accepts: application/json
-Authorization: Bearer <--token here-->
-
-
-###
-
-
-POST http://localhost:8080/authenticate
+### Sign up
+POST http://localhost:8080/api/auth/signup
 Content-Type: application/json
-Accepts: application/json
 
 {
-"username" :learning,
-"password" :"password"
+  "email": "admin001@gmail.com",
+  "password": "admin001",
+  "role": [
+    "string"
+  ],
+  "username": "admin001"
 }
 
+### Sign in
+
+POST http://localhost:8080/api/auth/signin
+Content-Type: application/json
+
+{
+  "password": "admin001",
+  "username": "admin001"
+}
+
+###
+
+GET http://localhost:8080/api/v1/notes
+Accepts: application/json
+Authorization: Bearer <--token here-->
 ###
 
 GET http://localhost:8080/api/v1/name/Bangla
@@ -35,7 +41,6 @@ Accepts: application/json
 Authorization: Bearer <--token here-->
 
 ###
-
 GET http://localhost:8080/api/v1/name/bangladesh
 Accepts: application/json
 

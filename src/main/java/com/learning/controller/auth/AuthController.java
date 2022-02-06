@@ -15,14 +15,14 @@ import javax.validation.Valid;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
-@Api(tags = "users")
+@Api(tags = "Auth Controller")
 public class AuthController {
 
   @Autowired
   UserDetailsServiceImpl userDetailsService;
 
   @PostMapping("/signin")
-  @ApiOperation(value = "${AuthController.signin}")
+  @ApiOperation(value = "${AuthController.authenticateUser}")
   @ApiResponses(value = {
           @ApiResponse(code = 400, message = "Something went wrong"),
           @ApiResponse(code = 422, message = "Invalid username/password supplied")})
@@ -31,7 +31,7 @@ public class AuthController {
   }
 
   @PostMapping("/signup")
-  @ApiOperation(value = "${AuthController.signup}")
+  @ApiOperation(value = "${AuthController.registerUser}")
   @ApiResponses(value = {
           @ApiResponse(code = 400, message = "Something went wrong"),
           @ApiResponse(code = 403, message = "Access denied"),

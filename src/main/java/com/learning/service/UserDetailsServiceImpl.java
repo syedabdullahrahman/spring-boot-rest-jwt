@@ -9,6 +9,7 @@ import com.learning.model.UserDetailsImpl;
 import com.learning.payload.request.LoginRequest;
 import com.learning.payload.request.SignupRequest;
 import com.learning.payload.response.JwtResponse;
+import com.learning.payload.response.MessageResponse;
 import com.learning.repository.RoleRepository;
 import com.learning.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,7 +92,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
   }
 
-  public JwtResponse signup(@Valid SignupRequest signUpRequest) {
+  public MessageResponse signup(@Valid SignupRequest signUpRequest) {
 
     // Create new user's account
     User user = new User(signUpRequest.getUsername(),
@@ -130,16 +131,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     user.setRoles(roles);
     userRepository.save(user);
 
-    UserDetailsImpl userDetails = UserDetailsImpl.build(user);
-    final String token = jwtTokenUtil.generateToken(userDetails);
-
-    return new JwtResponse(token,
-            userDetails.getId(),
-            userDetails.getUsername(),
-            userDetails.getEmail(),
-            userDetails.getAuthorities().stream()
-                    .map(item -> item.getAuthority())
-                    .collect(Collectors.toList()));
+    return new MessageResponse("User registration successful");
   }
 
   public void delete(String username) {
@@ -164,10 +156,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
   }
 
   public boolean existsByUsername(String username) {
-    return false;
+    Optional<User> user = userRepository.findByUsername(username);
+    return user.isPresent();
   }
 
   public boolean existsByEmail(String email) {
-    return false;
+    Optional<User> user = userRepository.findByEmail(email);
+    return user.isPresent();
   }
 }

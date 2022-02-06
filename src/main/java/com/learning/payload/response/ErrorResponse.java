@@ -1,4 +1,4 @@
-package com.learning.exception;
+package com.learning.payload.response;
 
 import io.swagger.annotations.ApiModelProperty;
 
