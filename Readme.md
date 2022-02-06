@@ -81,7 +81,7 @@ JSON Response:
 License
 -------
 
-Apache License, Version 2.0
+MIT License
 
 
 [spring-boot]: https://github.com/spring-projects/spring-boot
