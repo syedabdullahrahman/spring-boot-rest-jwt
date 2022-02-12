@@ -65,9 +65,11 @@ public class SwaggerConfig {
                         "3. Consuming a RESTful Web Service (Money Exchange + Country details) \n" +
                         "4. API rate limiting Bucket4j \n" +
                         "")
-                .termsOfServiceUrl("syedabdullahrahman.github.io")
-                .contact("syedabdullahrahman@gmail.com").license("MIT License")
-                .licenseUrl("syedabdullahrahman@gmail.com").version("1.0").build();
+                .contact(new Contact("Syed Abdullah", "https://syedabdullahrahman.github.io/", "syedabdullahrahman@gmail.com"))
+                .license("MIT License")
+                .licenseUrl("https://opensource.org/licenses/MIT")
+                .version("1.0")
+                .build();
     }
 }
 
