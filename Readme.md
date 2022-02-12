@@ -7,6 +7,7 @@ Spring Boot REST API Practices
 * REST API best practices
 * Swagger Docs
 * RestTemplate ( Consuming REST Services, a task implementation)
+* API rate limiting with Bucket4j
 * Task
 ![task](Task.PNG)
 *
