@@ -3,12 +3,10 @@ package com.learning.config;
 import com.google.common.base.Predicates;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.ApiKey;
-import springfox.documentation.service.AuthorizationScope;
-import springfox.documentation.service.SecurityReference;
-import springfox.documentation.service.Tag;
+import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
@@ -27,6 +25,7 @@ public class SwaggerConfig {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.any())
                 .paths(Predicates.not(PathSelectors.regex("/error")))
@@ -34,7 +33,6 @@ public class SwaggerConfig {
                 .useDefaultResponseMessages(false)
                 .securitySchemes(Collections.singletonList(apiKey()))
                 .securityContexts(Collections.singletonList(securityContext()))
-                .tags(new Tag("users", "Operations about users"))
                 .genericModelSubstitutes(Optional.class);
 
     }
@@ -58,5 +56,18 @@ public class SwaggerConfig {
         return Arrays.asList(new SecurityReference("Authorization", authorizationScopes));
     }
 
+    private ApiInfo apiInfo() {
+        return new ApiInfoBuilder()
+                .title("Spring Boot RESTful API + JWT + Consuming a RESTful Web Service")
+                .description("A project for: \n" +
+                        "1. RESTful API design & best practices \n" +
+                        "2. JWT \n" +
+                        "3. Consuming a RESTful Web Service (Money Exchange + Country details) \n" +
+                        "4. API rate limiting Bucket4j \n" +
+                        "")
+                .termsOfServiceUrl("syedabdullahrahman.github.io")
+                .contact("syedabdullahrahman@gmail.com").license("MIT License")
+                .licenseUrl("syedabdullahrahman@gmail.com").version("1.0").build();
+    }
 }
 

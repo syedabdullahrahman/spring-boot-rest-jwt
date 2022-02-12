@@ -3,6 +3,8 @@ package com.learning.controller.api.v1;
 import com.learning.model.Note;
 import com.learning.service.NoteService;
 import com.google.common.collect.ImmutableMap;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,24 +16,27 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@Api(value="notecontroller", description="Different note operations")
 public class NoteController {
 
     @Autowired
     NoteService noteService;
 
-    @GetMapping("/v1/notes")
+    @GetMapping(value = "/v1/notes",produces = "application/json")
     @ApiResponses(value = {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "Internal Server Error")})
+    @ApiOperation(value = "View all notes",response = ResponseEntity.class)
     public ResponseEntity<?> getAllNotes() {
         List<Note> note = noteService.getNotes();
         return ResponseEntity.ok().body(note);
     }
 
-    @PostMapping("/v1/notes")
+    @PostMapping(value = "/v1/notes", produces = "application/json")
     @ApiResponses(value = {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "Internal Server Error")})
+    @ApiOperation(value = "Add a note",response = ResponseEntity.class)
     public ResponseEntity<?> createNote(@Valid @RequestBody Note note) {
         Note noteDetails = noteService.save(note);
         ImmutableMap<String, Object> dataMap = ImmutableMap.of("status", 201,
@@ -39,10 +44,11 @@ public class NoteController {
         return ResponseEntity.status(201).body(dataMap);
     }
 
-    @GetMapping("/v1/notes/{id}")
+    @GetMapping(value = "/v1/notes/{id}", produces = "application/json")
     @ApiResponses(value = {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "Internal Server Error")})
+    @ApiOperation(value = "Get a note",response = ResponseEntity.class)
     public ResponseEntity<?> getNoteById(@PathVariable(value = "id") Long noteId) {
         Note note = noteService.getNoteById(noteId);
         ImmutableMap<String, Object> dataMap = ImmutableMap.of("status", 200,
@@ -50,10 +56,11 @@ public class NoteController {
         return ResponseEntity.ok().body(dataMap);
     }
 
-    @PutMapping("/v1/notes/{id}")
+    @PutMapping(value = "/v1/notes/{id}", produces = "application/json")
     @ApiResponses(value = {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "Internal Server Error")})
+    @ApiOperation(value = "Update a note",response = ResponseEntity.class)
     public  ResponseEntity<?> updateNote(@PathVariable(value = "id") Long noteId,
                            @Valid @RequestBody Note noteDetails) {
         Note updatedNote = noteService.update(noteId, noteDetails);
@@ -66,6 +73,7 @@ public class NoteController {
     @ApiResponses(value = {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "Internal Server Error")})
+    @ApiOperation(value = "Delete a note",response = ResponseEntity.class)
     public ResponseEntity<?> deleteNote(@PathVariable(value = "id") Long noteId) {
         noteService.delete(noteId);
         ImmutableMap<String, Object> dataMap = ImmutableMap.of("status", 200,
